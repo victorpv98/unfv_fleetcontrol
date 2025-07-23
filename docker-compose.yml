@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - APP_NAME=UNFV Fleet Control
+      - APP_ENV=production
+      - APP_KEY=base64:Je8AjLAY1dx8NtGPyNGF3/IlapuOSAGB5QhEBWW07rA=
+      - APP_DEBUG=false
+      - APP_URL=http://localhost:8080
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=unfv_fleetcontrol
+      - DB_USERNAME=unfv_user
+      - DB_PASSWORD=unfv_password
+      - SESSION_DRIVER=database
+      - CACHE_STORE=database
+      - QUEUE_CONNECTION=database
+    depends_on:
+      - db
+    volumes:
+      - ./storage:/var/www/html/storage
+      - ./bootstrap/cache:/var/www/html/bootstrap/cache
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: unfv_fleetcontrol
+      POSTGRES_USER: unfv_user
+      POSTGRES_PASSWORD: unfv_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unfv_user -d unfv_fleetcontrol"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
