@@ -4,29 +4,44 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
-    public function handle(Request $request, Closure $next, ...$roles): Response
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  string  $roles
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (!auth()->check()) {
-            return redirect('login')->with('error', 'Debe iniciar sesión para acceder');
+        if (!Auth::check()) {
+            if ($request->expectsJson()) {
+                return response()->json(['message' => 'No autenticado'], 401);
+            }
+            return redirect()->route('login');
         }
 
-        $user = auth()->user();
+        $user = Auth::user();
         
-        // Verificar si el usuario está activo
-        if (!$user->activo) {
-            auth()->logout();
-            return redirect('login')->with('error', 'Su cuenta ha sido desactivada. Contacte al administrador.');
+        // Verificar si el usuario tiene uno de los roles permitidos
+        if (in_array($user->rol, $roles)) {
+            return $next($request);
         }
 
-        // Verificar si tiene el rol requerido
-        if (!in_array($user->rol, $roles)) {
-            abort(403, 'No tiene permisos para acceder a esta sección. Rol requerido: ' . implode(', ', $roles));
+        // Si no tiene permisos, redirigir según el contexto
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'No tienes permisos para acceder a este recurso',
+                'required_roles' => $roles,
+                'user_role' => $user->rol
+            ], 403);
         }
 
-        return $next($request);
+        // Redirigir al dashboard con mensaje de error
+        return redirect()->route('dashboard')->with('error', 'No tienes permisos para acceder a esta sección.');
     }
 }

@@ -17,16 +17,6 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\AuditoriaController;
 use App\Http\Controllers\UsuarioController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Aquí puedes registrar las rutas web de tu aplicación. Estas rutas
-| son cargadas por el RouteServiceProvider dentro de un grupo que
-| contiene el middleware "web".
-|
-*/
 
 // Redirigir la raíz al dashboard
 Route::get('/', function () {
