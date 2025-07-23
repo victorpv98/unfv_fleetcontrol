@@ -1,0 +1,44 @@
+.alert-custom {
+    border: none;
+    border-radius: $border-radius-lg;
+    border-left: 4px solid;
+    
+    &.alert-primary-custom {
+        background-color: rgba($primary-blue, 0.1);
+        border-left-color: $primary-blue;
+        color: $primary-blue;
+    }
+    
+    &.alert-info-custom {
+        background-color: rgba($accent-cyan, 0.1);
+        border-left-color: $accent-cyan;
+        color: darken($accent-cyan, 20%);
+    }
+    
+    .alert-icon {
+        font-size: 1.25rem;
+        margin-right: 0.75rem;
+    }
+}
+
+// Notification alerts
+.notification-alert {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1060;
+    min-width: 300px;
+    max-width: 400px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

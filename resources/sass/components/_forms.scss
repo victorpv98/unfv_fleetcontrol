@@ -1,0 +1,83 @@
+.form-custom {
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        color: $primary-blue;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control {
+        border: 2px solid $light-gray;
+        border-radius: $border-radius;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        
+        &:focus {
+            border-color: $accent-cyan;
+            box-shadow: 0 0 0 0.2rem rgba(0, 185, 241, 0.15);
+        }
+        
+        &.is-invalid {
+            border-color: #dc3545;
+        }
+        
+        &.is-valid {
+            border-color: #28a745;
+        }
+    }
+    
+    .form-select {
+        border: 2px solid $light-gray;
+        border-radius: $border-radius;
+        
+        &:focus {
+            border-color: $accent-cyan;
+            box-shadow: 0 0 0 0.2rem rgba(0, 185, 241, 0.15);
+        }
+    }
+    
+    .form-check {
+        .form-check-input {
+            &:checked {
+                background-color: $accent-cyan;
+                border-color: $accent-cyan;
+            }
+            
+            &:focus {
+                box-shadow: 0 0 0 0.2rem rgba(0, 185, 241, 0.25);
+            }
+        }
+    }
+    
+    .input-group {
+        .input-group-text {
+            background-color: #f8f9fa;
+            border: 2px solid $light-gray;
+            color: $primary-blue;
+        }
+    }
+}
+
+// Search forms
+.search-form {
+    .input-group {
+        .form-control {
+            border-right: none;
+        }
+        
+        .btn {
+            border-left: none;
+            background: $accent-cyan;
+            border-color: $accent-cyan;
+            color: $white;
+            
+            &:hover {
+                background: darken($accent-cyan, 10%);
+            }
+        }
+    }
+}

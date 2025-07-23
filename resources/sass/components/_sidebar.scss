@@ -1,0 +1,97 @@
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, $dark-blue 0%, darken($dark-blue, 10%) 100%);
+    color: $sidebar-color;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    
+    .sidebar-brand {
+        padding: 1.5rem 1rem;
+        border-bottom: 1px solid rgba($white, 0.1);
+        
+        h4 {
+            color: $white;
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        small {
+            color: rgba($white, 0.7);
+            font-size: 0.75rem;
+        }
+    }
+    
+    .sidebar-menu {
+        padding: 1rem 0;
+        
+        .menu-item {
+            margin-bottom: 0.25rem;
+            
+            a {
+                display: flex;
+                align-items: center;
+                padding: 0.75rem 1rem;
+                color: $sidebar-color;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                border-left: 3px solid transparent;
+                
+                &:hover {
+                    background-color: rgba($white, 0.1);
+                    color: $sidebar-hover-color;
+                    border-left-color: $accent-cyan;
+                }
+                
+                &.active {
+                    background-color: $sidebar-active-bg;
+                    color: $sidebar-active-color;
+                    border-left-color: $accent-cyan;
+                    font-weight: 600;
+                }
+                
+                i {
+                    width: 20px;
+                    margin-right: 0.75rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+        
+        .menu-section {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba($white, 0.1);
+            
+            .section-title {
+                padding: 0 1rem 0.5rem;
+                color: rgba($white, 0.6);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+        }
+    }
+}
+
+// Sidebar responsive
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100vh;
+        z-index: 1050;
+        transition: left 0.3s ease;
+        
+        &.show {
+            left: 0;
+        }
+    }
+    
+    .main-wrapper {
+        .content-wrapper {
+            margin-left: 0;
+        }
+    }
+}

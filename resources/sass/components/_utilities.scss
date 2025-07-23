@@ -1,0 +1,84 @@
+// Spacing utilities
+.p-custom {
+    padding: 1.5rem !important;
+}
+
+.m-custom {
+    margin: 1.5rem !important;
+}
+
+// Shadow utilities
+.shadow-custom {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-lg-custom {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+// Border utilities
+.border-custom {
+    border: 2px solid $light-gray !important;
+}
+
+.border-primary-custom {
+    border-color: $primary-blue !important;
+}
+
+.border-accent-custom {
+    border-color: $accent-cyan !important;
+}
+
+// Text utilities
+.text-primary-custom {
+    color: $primary-blue !important;
+}
+
+.text-accent-custom {
+    color: $accent-cyan !important;
+}
+
+// Background utilities
+.bg-primary-custom {
+    background-color: $primary-blue !important;
+}
+
+.bg-accent-custom {
+    background-color: $accent-cyan !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, $primary-blue 0%, darken($primary-blue, 10%) 100%) !important;
+}
+
+.bg-gradient-accent {
+    background: linear-gradient(135deg, $accent-cyan 0%, darken($accent-cyan, 10%) 100%) !important;
+}
+
+// Loading spinner
+.spinner-custom {
+    border: 3px solid rgba($accent-cyan, 0.3);
+    border-top: 3px solid $accent-cyan;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+// Responsive utilities
+@media (max-width: 576px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .show-desktop {
+        display: block !important;
+    }
+}

@@ -1,0 +1,106 @@
+.card-custom {
+    border: 1px solid $light-gray;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+    
+    &:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, $white 0%, #f8f9fa 100%);
+        border-bottom: 1px solid $light-gray;
+        padding: 1rem 1.25rem;
+        
+        h5 {
+            color: $primary-blue;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .card-tools {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+}
+
+// Dashboard cards
+.dashboard-card {
+    border: none;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-2px);
+    }
+    
+    &.card-primary {
+        background: linear-gradient(135deg, $primary-blue 0%, darken($primary-blue, 10%) 100%);
+        color: $white;
+    }
+    
+    &.card-info {
+        background: linear-gradient(135deg, $accent-cyan 0%, darken($accent-cyan, 10%) 100%);
+        color: $white;
+    }
+    
+    &.card-success {
+        background: linear-gradient(135deg, #28a745 0%, darken(#28a745, 10%) 100%);
+        color: $white;
+    }
+    
+    &.card-warning {
+        background: linear-gradient(135deg, #ffc107 0%, darken(#ffc107, 10%) 100%);
+        color: $black;
+    }
+    
+    &.card-danger {
+        background: linear-gradient(135deg, #dc3545 0%, darken(#dc3545, 10%) 100%);
+        color: $white;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        
+        .dashboard-icon {
+            font-size: 2.5rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .dashboard-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dashboard-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    }
+}
+
+// Status cards
+.status-card {
+    border-left: 4px solid;
+    
+    &.status-active {
+        border-left-color: #28a745;
+    }
+    
+    &.status-maintenance {
+        border-left-color: #ffc107;
+    }
+    
+    &.status-inactive {
+        border-left-color: #dc3545;
+    }
+    
+    &.status-pending {
+        border-left-color: $accent-cyan;
+    }
+}

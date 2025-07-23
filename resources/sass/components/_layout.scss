@@ -1,0 +1,63 @@
+// Layout principal
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.page-header {
+    background: linear-gradient(135deg, $primary-blue 0%, $dark-blue 100%);
+    color: $white;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    
+    h1, h2, h3 {
+        color: $white;
+        margin-bottom: 0.5rem;
+    }
+    
+    .breadcrumb {
+        background: transparent;
+        margin-bottom: 0;
+        padding: 0;
+        
+        .breadcrumb-item {
+            color: rgba($white, 0.8);
+            
+            &.active {
+                color: $white;
+            }
+            
+            a {
+                color: rgba($white, 0.9);
+                text-decoration: none;
+                
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+// Footer
+.main-footer {
+    background-color: $dark-blue;
+    color: rgba($white, 0.8);
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    
+    a {
+        color: $accent-cyan;
+        
+        &:hover {
+            color: $white;
+        }
+    }
+}
